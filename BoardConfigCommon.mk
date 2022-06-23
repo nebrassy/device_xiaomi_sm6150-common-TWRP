@@ -9,7 +9,7 @@ BOARD_VENDOR := xiaomi
 COMMON_PATH := device/xiaomi/sm6150-common
 
 # Inherit from proprietary files
-include vendor/xiaomi/sm6150-common/BoardConfigVendor.mk
+#include vendor/xiaomi/sm6150-common/BoardConfigVendor.mk
 
 # A/B
 ifeq ($(TARGET_IS_VAB),true)
@@ -96,8 +96,8 @@ ODM_MANIFEST_SKUS += nfc
 ODM_MANIFEST_NFC_FILES := $(COMMON_PATH)/manifest_nfc.xml
 
 # Init
-TARGET_INIT_VENDOR_LIB ?= //$(COMMON_PATH):init_xiaomi_sm6150
-TARGET_RECOVERY_DEVICE_MODULES ?= init_xiaomi_sm6150
+#TARGET_INIT_VENDOR_LIB ?= //$(COMMON_PATH):init_xiaomi_sm6150
+#TARGET_RECOVERY_DEVICE_MODULES ?= init_xiaomi_sm6150
 
 # Kernel
 ifeq ($(PRODUCT_VIRTUAL_AB_OTA),true)
@@ -201,15 +201,15 @@ TARGET_PRODUCT_PROP += $(COMMON_PATH)/product.prop
 TARGET_SYSTEM_EXT_PROP += $(COMMON_PATH)/system_ext.prop
 
 # Recovery
-ifeq ($(PRODUCT_USE_DYNAMIC_PARTITIONS),true)
-ifeq ($(PRODUCT_VIRTUAL_AB_OTA),true)
-TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab_AB.qcom
-else
-TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.qcom
-endif
-else
-TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab_SAR.qcom
-endif
+#ifeq ($(PRODUCT_USE_DYNAMIC_PARTITIONS),true)
+#ifeq ($(PRODUCT_VIRTUAL_AB_OTA),true)
+#TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab_AB.qcom
+#else
+#TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.qcom
+#endif
+#else
+#TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab_SAR.qcom
+#endif
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_INCLUDE_RECOVERY_DTBO := true
@@ -223,14 +223,14 @@ ENABLE_VENDOR_RIL_SERVICE := true
 TARGET_RELEASETOOLS_EXTENSIONS := $(COMMON_PATH)
 
 # Security patch level
-VENDOR_SECURITY_PATCH := 2022-04-01
+#VENDOR_SECURITY_PATCH := 2022-04-01
 
 # Sepolicy
-TARGET_SEPOLICY_DIR := msmsteppe
-include device/qcom/sepolicy_vndr/SEPolicy.mk
-SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/private
-SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/public
-BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
+#TARGET_SEPOLICY_DIR := msmsteppe
+#include device/qcom/sepolicy_vndr/SEPolicy.mk
+#SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/private
+#SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/public
+#BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
 
 # Verified Boot
 BOARD_AVB_ENABLE := true
